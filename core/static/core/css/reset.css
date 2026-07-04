@@ -1,0 +1,36 @@
+/* Use a more intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and paddings for common layouts */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Allow percentage-based heights in the application */
+html, body {
+  height: 100%;
+}
+
+/* Improve media defaults and remove edge collapses */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form controls to avoid browser overrides */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Prevent text-overflow clipping issues */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove default list styles if preferred */
+ol, ul {
+  list-style: none;
+}
