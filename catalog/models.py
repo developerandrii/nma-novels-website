@@ -130,6 +130,11 @@ class Creator(models.Model):
 
 
 class Chapter(models.Model):
+    public_id = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+    )
     novel = models.ForeignKey(
         'Novel', 
         on_delete=models.CASCADE,
