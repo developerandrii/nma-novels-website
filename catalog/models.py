@@ -57,3 +57,28 @@ class Novel(models.Model):
     def get_absolute_url(self):
         return reverse('catalog:novel-detail', kwargs={'public_id': self.public_id})
 
+
+class Genre(models.Model):
+    name = models.CharField(
+        max_length=80,
+        unique=True
+    )
+    description = models.TextField(
+        blank=True
+    )
+
+    def __str__(self):
+        return self.name
+    
+
+class Tag(models.Model):
+    name = models.CharField(
+        max_length=80,
+        unique=True
+    )
+    description = models.TextField(
+        blank=True
+    )
+
+    def __str__(self):
+        return self.name
