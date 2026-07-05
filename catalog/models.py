@@ -153,6 +153,12 @@ class Chapter(models.Model):
     class Meta:
         ordering = ['-number']
 
+    def display_number(self):
+        if self.number == self.number.to_integral():
+            return str(int(self.number))
+
+        return str(self.number.normalize())
+
     def __str__(self):
-        return f"Chpater: {self.number}"
+        return f"Chapter {self.display_number()}"
     
