@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 import uuid
 
@@ -52,4 +53,7 @@ class Novel(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('catalog:novel-detail', kwargs={'public_id': self.public_id})
 
