@@ -1,0 +1,24 @@
+:root {
+    --text-md: .8rem;
+    --text-base: .9rem;
+    --text-lg: 1rem;
+    --text-xl: 1.2rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.8rem;
+}
+
+
+body {
+    font-family:
+        "Inter", 
+        "Helvetica Neue", 
+        Arial, 
+        sans-serif;
+
+    font-size: var(--text-base);
+}
+
+.container {
+    width: min(1180px, calc(100% - 32px));
+    margin-inline: auto;
+}

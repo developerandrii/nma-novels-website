@@ -1,0 +1,58 @@
+.main-article {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.novel-header {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin: auto;
+    flex-basis: 500px;
+}
+
+.novel-section {
+    margin: auto;
+    flex-basis: 500px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px -2px;
+    padding: 15px;
+}
+
+.novel-cover {
+    width: 160px;
+    aspect-ratio: 2 / 3;
+}
+
+.novel-title {
+    font-size: var(--text-xl);
+    text-align: center;
+}
+
+
+.nma-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px
+}
+
+.nma-stats--margin {
+    margin-block: 5px;
+}
+
+.stat {
+    padding: 3px 6px;
+    border-radius: 2px;
+    border: 1px solid hsl(0 0% 75%);
+    background-color: hsla(0, 0%, 90%, 0.249);
+    font-size: var(--text-md);
+
+}

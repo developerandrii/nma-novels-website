@@ -7,12 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'core/css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
-    {% block stylesheets %}
+    {% block stylesheet %}
     {% endblock %}
     {{ form.media.css }}
 </head>
 <body>
-    <header>
+    <header class="container">
         <span>NMA</span>
     </header>
     <main>
