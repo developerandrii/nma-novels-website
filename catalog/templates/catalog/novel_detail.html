@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'catalog/css/novel_detail.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<header class="novel">
+    <img class="novel-cover" src="{{ novel.cover.url }}" alt="{{ novel.title }}">
+    <h1 class="novel-title">{{ novel.title }}</h1>
+    <div class="novel-stats">
+        <span class="stat">{{ novel.get_format_display }}</span>
+        <span class="stat">{{ novel.release_date|date:"Y" }}</span>
+        <span class="stat">{{ novel.status }}</span>
+    </div>
+</header>
+
+<section class="novel-info novel-section">
+    <div>
+        <h3>Description</h3>
+        <p>{{ novel.description }}</p>
+    </div>
+</section>
+{% endblock %}
