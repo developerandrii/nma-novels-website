@@ -50,6 +50,16 @@ class Novel(models.Model):
         blank=True,
         null=True
     )
+    genres = models.ManyToManyField(
+        'Genre',
+        blank=True,
+        related_name='novels'
+    )
+    tags = models.ManyToManyField(
+        'Tag',
+        blank=True,
+        related_name='novels'
+    )
 
     def __str__(self):
         return self.title
