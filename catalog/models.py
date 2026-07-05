@@ -101,3 +101,21 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Creator(models.Model):
+    public_id = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+    )
+    name = models.CharField(
+        unique=True
+    )
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
