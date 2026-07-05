@@ -128,3 +128,26 @@ class Creator(models.Model):
     def __str__(self):
         return self.name
 
+
+class Chapter(models.Model):
+    novel = models.ForeignKey(
+        'Novel', 
+        on_delete=models.CASCADE,
+        related_name='chapters',
+    )
+    title = models.CharField(
+        max_length=250,
+        blank=True,
+    )
+    number = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+    )
+    content = models.TextField()
+
+    class Meta:
+        ordering = ['-number']
+
+    def __str__(self):
+        return f"Chpater: {self.number}"
+    
