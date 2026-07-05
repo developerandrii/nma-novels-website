@@ -61,6 +61,9 @@ class Novel(models.Model):
         related_name='novels'
     )
 
+    class Meta:
+        ordering = ['title']
+
     def __str__(self):
         return self.title
     
@@ -77,6 +80,9 @@ class Genre(models.Model):
         blank=True
     )
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
     
@@ -89,6 +95,9 @@ class Tag(models.Model):
     description = models.TextField(
         blank=True
     )
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
