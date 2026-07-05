@@ -60,6 +60,15 @@ class Novel(models.Model):
         blank=True,
         related_name='novels'
     )
+    authors = models.ManyToManyField(
+        'Creator',
+        related_name='written_novels',
+    )
+    artists = models.ManyToManyField(
+        'Creator',
+        blank=True,
+        related_name='illustrated_novels',
+    )
 
     class Meta:
         ordering = ['title']
