@@ -5,6 +5,7 @@
     --text-xl: 1.2rem;
     --text-2xl: 1.5rem;
     --text-3xl: 1.8rem;
+    --bg-color: white;
 }
 
 
@@ -19,6 +20,22 @@ body {
 }
 
 .container {
-    width: min(1180px, calc(100% - 32px));
+    width: min(1180px, 100%);
     margin-inline: auto;
+}
+
+.site-header {
+    padding: 10px;
+}
+
+/* Replace .scroll-container with your specific class name */
+body {
+    /* Enables scrolling if the content overflows */
+    overflow: auto; 
+    
+    /* Hides standard scrollbars in Firefox */
+    scrollbar-width: none; 
+    
+    /* Hides scrollbars in Internet Explorer and legacy Edge */
+    -ms-overflow-style: none; 
 }

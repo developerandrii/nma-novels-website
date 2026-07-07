@@ -162,3 +162,6 @@ class Chapter(models.Model):
     def __str__(self):
         return f"Chapter {self.display_number()}"
     
+    def get_absolute_url(self):
+        return reverse('catalog:chapter-detail', kwargs={'public_id': self.public_id})
+    

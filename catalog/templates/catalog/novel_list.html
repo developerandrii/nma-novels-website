@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/novel_detail.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <section class="novel-list">
+        {% for novel in novel_list %}
+            <article class="novel-tile">
+                <a href="#" class="novel-tile__cover-link">
+                    <img class="novel-tile__cover" src="{{novel.cover.url}}" alt="fuck">
+                </a>
+                <div class="novel-tile__body">
+                    <h2 class="novel-tile__title">
+                        <a href="#">{{ novel.title }}</a>
+                    </h2>
+                    <div class="novel-tile__info">
+                        <span>{{novel.get_format_display}}</span>
+                        <span>{{novel.release_date|date:"Y"}}</span>
+                        <span>{{novel.statuts}}</span>
+                    </div>
+                    </p>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
