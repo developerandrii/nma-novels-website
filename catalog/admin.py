@@ -19,6 +19,7 @@ class CreatorAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class ChapterAdmin(admin.ModelAdmin):
+    list_display = ['__str__', 'title']
     search_fields = ['novel__title']
 
 
