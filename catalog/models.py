@@ -144,23 +144,14 @@ class Chapter(models.Model):
         max_length=250,
         blank=True,
     )
-    number = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
-    )
+    number = models.IntegerField()
     content = models.TextField()
 
     class Meta:
         ordering = ['-number']
 
-    def display_number(self):
-        if self.number == self.number.to_integral():
-            return str(int(self.number))
-
-        return str(self.number.normalize())
-
     def __str__(self):
-        return f"Chapter {self.display_number()}"
+        return f"Chapter {self.number}"
     
     def get_absolute_url(self):
         return reverse('catalog:chapter-detail', kwargs={'public_id': self.public_id})
