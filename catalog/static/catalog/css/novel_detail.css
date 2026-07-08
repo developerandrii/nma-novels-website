@@ -57,3 +57,9 @@
     font-size: var(--text-md);
 
 }
+
+.novel-chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

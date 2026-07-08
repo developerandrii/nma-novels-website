@@ -28,5 +28,16 @@
                 </p>
             </div>
         </section>
+
+        <section class="novel-section">
+            <ol class="novel-chapters">
+                {% for chapter in novel.chapters.all %}
+                    <a href="{{chapter.get_absolute_url}}">
+                        {{ chapter.number }}
+                    </a>
+                {% endfor %}
+            </ol>
+
+        </section>
     </article>
 {% endblock %}
