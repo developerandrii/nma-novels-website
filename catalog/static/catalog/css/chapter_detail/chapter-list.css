@@ -3,7 +3,8 @@
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
+    height: 100vh;
+    overflow: scroll;
     width: min(400px, 100%);
     background-color: var(--bg-color);
     padding: 10px;
@@ -26,7 +27,7 @@
 #chapter-list {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 10px;
     overflow-y: scroll;
     scrollbar-width: none; 
     -ms-overflow-style: none; 
