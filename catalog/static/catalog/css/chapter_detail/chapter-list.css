@@ -32,3 +32,12 @@
     scrollbar-width: none; 
     -ms-overflow-style: none; 
 }
+
+.chapter-list__chapter {
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.chpater-list--current-chapter {
+    background-color: hsl(0deg 1.35% 25.36%);
+}
