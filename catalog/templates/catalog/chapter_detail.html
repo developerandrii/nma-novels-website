@@ -176,7 +176,7 @@
                     ✕
                 </button>
                 <h2 class="chapter-list-modal__title">
-                    Chapter List {{chapter.number}}
+                    Chapter List
                 </h2>
             </header>
 
@@ -184,12 +184,12 @@
                 <ol id="chapter-list">
                     {% for chp in chapters %}
                         <li>
-                            {% if chp.number == chapter.number %}
-                                <a class="chpater-list--current-chapter chapter-list__chapter" href="{% url 'catalog:chapter-detail' chapter.public_id %}">
+                            {% if chp.public_id == chapter.public_id %}
+                                <a class="chpater-list--current-chapter chapter-list__chapter" href="{% url 'catalog:chapter-detail' chp.public_id %}">
                                     Chapter {{ chp.number }} — {{ chp.title }}
                                 </a>
                             {% else %}
-                                <a class="chapter-list__chapter" href="{% url 'catalog:chapter-detail' chapter.public_id %}">
+                                <a class="chapter-list__chapter" href="{% url 'catalog:chapter-detail' chp.public_id %}">
                                     Chapter {{ chp.number }} — {{ chp.title }}
                                 </a>
                             {% endif %}
