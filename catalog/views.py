@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, CreateView
+from django.views.generic import DetailView, CreateView, ListView
 from django.shortcuts import get_object_or_404
 from .models import Novel, Chapter
 
@@ -67,3 +67,7 @@ class ChapterCreateView(CreateView):
             form.add_error('number', f"Chapter {submitted_number} already exists for this novel.")
             return self.form_invalid(form)
         return super().form_valid(form)
+    
+
+class NovelListView(ListView):
+    model = Novel

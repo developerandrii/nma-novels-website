@@ -3,27 +3,35 @@
 
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'catalog/css/novel_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'catalog/css/novel_list.css' %}">
 {% endblock %}
 
 
 {% block main %}
-    <section class="novel-list">
+    <section class="novel-list container">
         {% for novel in novel_list %}
             <article class="novel-tile">
-                <a href="#" class="novel-tile__cover-link">
+                <a href="{{ novel.get_absolute_url }}" class="novel-tile__cover-link">
                     <img class="novel-tile__cover" src="{{novel.cover.url}}" alt="fuck">
                 </a>
                 <div class="novel-tile__body">
                     <h2 class="novel-tile__title">
-                        <a href="#">{{ novel.title }}</a>
+                        <a href="{{ novel.get_absolute_url }}">{{ novel.title }}</a>
                     </h2>
                     <div class="novel-tile__info">
                         <span>{{novel.get_format_display}}</span>
                         <span>{{novel.release_date|date:"Y"}}</span>
-                        <span>{{novel.statuts}}</span>
+                        <span>{{novel.status}}</span>
                     </div>
+                    <div class="novel-tile__genres">
+                        {% for genre in novel.genres.all %}
+                            <span>{{genre}}</span>
+                        {% endfor %}
+                    </div>
+                    <p class="novel-tile__description">
+                        {{ novel.description }}
                     </p>
+                    
                 </div>
             </article>
         {% endfor %}

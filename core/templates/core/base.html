@@ -14,6 +14,10 @@
 <body>
     <header class="container site-header">
         <span>NMA</span>
+
+        <nav class="site-nav">
+            <a href="{% url 'catalog:novel-list' %}">Catalog</a>
+        </nav>
     </header>
     <main class="container">
         {% block main %}
