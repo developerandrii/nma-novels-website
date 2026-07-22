@@ -1,5 +1,5 @@
 let lastTapTime = 0;
-const TAP_DELAY_THRESHOLD = 200; // Time in milliseconds
+const TAP_DELAY_THRESHOLD = 250; // Time in milliseconds
 
 
 const pageCtl = document.querySelector("[data-page-ctl]");
