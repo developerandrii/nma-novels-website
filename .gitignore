@@ -12,6 +12,7 @@ media/
 
 # Collected static files (production)
 staticfiles/
+/static/
 
 # IDE files
 .vscode/

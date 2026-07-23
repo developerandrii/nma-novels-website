@@ -1,0 +1,27 @@
+.user-profile {
+    display: flex;
+    gap: 20px;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.user-profile img {
+    width: 80px;
+    aspect-ratio: 1/1;
+}
+
+.user-profile h1 {
+    align-self: flex-end;
+}
+
+.user-ctl {
+    width: 95%;
+    margin: auto;
+}
+
+#logout-form > button {
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid gray;
+}
