@@ -1,0 +1,25 @@
+.authentication_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: min(450px, 90%);
+    padding: 20px;
+    margin: auto;
+}
+
+.authentication_form > p {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.authentication_form > p > input {
+    padding: 5px;
+}
+
+.authentication_form > button {
+    width: fit-content;
+    padding: 5px 10px;
+    align-self: self-end;
+}

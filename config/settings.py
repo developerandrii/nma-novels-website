@@ -14,6 +14,8 @@ from pathlib import Path
 import os 
 from dotenv import load_dotenv
 import dj_database_url
+from django.urls import reverse_lazy
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_extensions',
 
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
@@ -124,7 +128,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_URL = '/static/'
 
 
 # Media files
@@ -134,3 +142,5 @@ MEDIA_URL = 'media/'
 
 # Custom user model
 AUTH_USER_MODEL = "users.User"
+
+LOGOUT_REDIRECT_URL = reverse_lazy('catalog:novel-list')
