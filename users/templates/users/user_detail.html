@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'users/css/user_detail.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <section class="user-profile">
+        <h1>
+            {{ user.username }}
+        </h1>
+    </section>
+    <section class="user-ctl">
+        <form action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button>Logout</button>
+        </form>
+    </section>
+{% endblock %}
