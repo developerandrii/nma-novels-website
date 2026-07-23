@@ -18,6 +18,17 @@
         <nav class="site-nav">
             <a href="{% url 'catalog:novel-list' %}">Catalog</a>
         </nav>
+
+        <div>
+            {% if user.username %}
+                <a href="{% url 'users:user-detail' user.pk %}">
+                    {{ user.username }}
+                </a>
+            {% else %}
+                <a href="{% url 'users:login' %}">Log in</a>
+                <a href="{% url 'users:register' %}">Register</a>
+            {% endif %}
+        </div>
     </header>
     <main class="container">
         {% block main %}
