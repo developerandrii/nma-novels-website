@@ -5,6 +5,10 @@ from django.urls import reverse_lazy
 from .models import Novel, Chapter
 
 
+class NovelListView(ListView):
+    model = Novel
+
+
 class NovelDetailView(DetailView):
     model = Novel
     slug_url_kwarg = "public_id"
@@ -132,5 +136,9 @@ class ChapterUpdateView(UpdateView):
         return super().form_valid(form)
     
 
-class NovelListView(ListView):
-    model = Novel
+class ChapterDeleteView(DeleteView):
+    model = Chapter
+    success_url = reverse_lazy('catalog:novel-list')
+    slug_url_kwarg = "public_id"
+    slug_field = "public_id"
+

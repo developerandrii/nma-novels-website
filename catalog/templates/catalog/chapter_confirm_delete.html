@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/chapter_confirm_delete.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <form class="chapter-form" method="post">{% csrf_token %}
+        <div class="chapter-info">
+            <div class="chapter-info-line">
+                <span>Novel</span>
+                <span>
+                    {{ chapter.novel.title }}
+                </span>
+            </div>
+            <div class="chapter-info-line">
+                <span>Title</span>
+                <span>
+                    {{ chapter.title }}
+                </span>
+            </div>
+            <div class="chapter-info-line">
+                <span>Number</span>
+                <span>
+                    {{ chapter.number }}
+                </span>
+            </div>
+        </div>
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}
