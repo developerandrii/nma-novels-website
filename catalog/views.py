@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, CreateView, ListView
+from django.views.generic import DetailView, CreateView, ListView, UpdateView
 from django.shortcuts import get_object_or_404
 from .models import Novel, Chapter
 
@@ -24,6 +24,25 @@ class NovelCreateView(CreateView):
         'authors',
         'artists',
     ]
+
+
+class NovelUpdateView(UpdateView):
+    model = Novel
+    slug_url_kwarg = "public_id"
+    slug_field = "public_id"
+    fields = [
+        'title',
+        'format',
+        'status',
+        'description',
+        'release_date',
+        'cover',
+        'genres',
+        'tags',
+        'authors',
+        'artists',
+    ]
+
 
 
 class ChapterDetailView(DetailView):
