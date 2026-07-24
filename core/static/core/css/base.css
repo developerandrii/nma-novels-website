@@ -22,6 +22,10 @@ body {
     color: var(--color)
 }
 
+select {
+    background-color: var(--bg-color);
+}
+
 .container {
     width: min(1180px, 100%);
     margin-inline: auto;

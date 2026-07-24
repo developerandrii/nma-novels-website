@@ -9,6 +9,22 @@ class NovelDetailView(DetailView):
     slug_field = "public_id"
 
 
+class NovelCreateView(CreateView):
+    model = Novel
+    template_name = 'catalog/novel_form.html'
+    fields = [
+        'title',
+        'format',
+        'status',
+        'description',
+        'release_date',
+        'cover',
+        'genres',
+        'tags',
+        'authors',
+        'artists',
+    ]
+
 
 class ChapterDetailView(DetailView):
     model = Chapter
