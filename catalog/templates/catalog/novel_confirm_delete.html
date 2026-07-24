@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/novel_confirm_delete.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <form class="novel-form" method="post">{% csrf_token %}
+        <div class="novel-info">
+            <div class="novel-info-line">
+                <span>Title</span>
+                <span>
+                    {{ novel.title }}
+                </span>
+            </div>
+            <div class="novel-info-line">
+                <span>Authors</span>
+                <p>
+                    {% for author in novel.authors.all %}
+                        {{ author.name }}
+                    {% endfor %}
+                </p>
+            </div>
+            <div class="novel-info-line">
+                <span>Year</span>
+                <span>
+                    {{ novel.release_date }}
+                </span>
+            </div>
+            <div class="novel-info-line">
+                <span>Chapters</span>
+                <span>
+                    {{ novel.chapters.count }}
+                </span>
+            </div>
+        </div>
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}

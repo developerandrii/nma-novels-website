@@ -1,5 +1,7 @@
-from django.views.generic import DetailView, CreateView, ListView, UpdateView
+from django.views.generic import DetailView, CreateView, ListView, UpdateView, DeleteView
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+
 from .models import Novel, Chapter
 
 
@@ -30,6 +32,8 @@ class NovelUpdateView(UpdateView):
     model = Novel
     slug_url_kwarg = "public_id"
     slug_field = "public_id"
+    slug_url_kwarg = "public_id"
+    slug_field = "public_id"
     fields = [
         'title',
         'format',
@@ -42,6 +46,13 @@ class NovelUpdateView(UpdateView):
         'authors',
         'artists',
     ]
+
+
+class NovelDeleteView(DeleteView):
+    model = Novel
+    success_url = reverse_lazy('catalog:novel-list')
+    slug_url_kwarg = "public_id"
+    slug_field = "public_id"
 
 
 

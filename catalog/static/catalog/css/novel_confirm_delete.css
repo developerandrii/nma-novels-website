@@ -1,0 +1,25 @@
+.novel-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+    margin: auto;
+    padding: 15px;
+}
+
+.novel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.novel-info-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.novel-form > input[type='submit'] {
+    width: fit-content;
+    align-self: flex-end;
+    padding: 5px 10px;
+}
