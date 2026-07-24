@@ -1,9 +1,15 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/chapter_form.css' %}">
+{% endblock %}
+
+
 {% block main %}
-    <form method="post">{% csrf_token %}
+    <form class="chapter-form" method="post">{% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Save">
+        <input type="submit" value="Submit">
     </form>
 {% endblock %}

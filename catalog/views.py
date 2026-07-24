@@ -115,5 +115,22 @@ class ChapterCreateView(CreateView):
         return super().form_valid(form)
     
 
+class ChapterUpdateView(UpdateView):
+    model = Chapter
+    template_name = 'catalog/chapter_form.html'
+    slug_url_kwarg = "public_id"
+    slug_field = "public_id"
+    fields = [
+        'title',
+        'number',
+        'content',
+    ]
+
+    def form_valid(self, form):
+        novel = get_object_or_404(Novel, public_id=self.kwargs.get('public_id'))
+        form.instance.novel = novel
+        return super().form_valid(form)
+    
+
 class NovelListView(ListView):
     model = Novel
