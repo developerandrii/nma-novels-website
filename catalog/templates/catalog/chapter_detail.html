@@ -4,7 +4,7 @@
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'catalog/css/chapter_detail.css' %}">
 <link rel="stylesheet" href="{% static 'catalog/css/chapter_detail/reader_settings.css' %}">
-<link rel="stylesheet" href="{% static 'catalog/css/chapter_detail/chapter-list.css' %}">
+<link rel="stylesheet" href="{% static 'catalog/css/chapter_detail/chapter-list-modal.css' %}">
 {% endblock %}
 
 {% block main %}
@@ -161,50 +161,12 @@
         </div>
     </div>
 
-    <div 
-    class="chapter-list-modal"
-    data-chapter-list-modal
-    hidden
-    >
-        <div class="chapter-list-modal__window">
-            <header class="chapter-list-modal__header">
-                <button
-                    class="chapter-list-modal__close"
-                    type="button"
-                    data-chapter-list-modal-close
-                >
-                    ✕
-                </button>
-                <h2 class="chapter-list-modal__title">
-                    Chapter List
-                </h2>
-            </header>
-
-            <div class="chapter-list-modal__body">
-                <ol id="chapter-list">
-                    {% for chp in chapters %}
-                        <li>
-                            {% if chp.public_id == chapter.public_id %}
-                                <a class="chpater-list--current-chapter chapter-list__chapter" href="{% url 'catalog:chapter-detail' chp.public_id %}">
-                                    Chapter {{ chp.number }} — {{ chp.title }}
-                                </a>
-                            {% else %}
-                                <a class="chapter-list__chapter" href="{% url 'catalog:chapter-detail' chp.public_id %}">
-                                    Chapter {{ chp.number }} — {{ chp.title }}
-                                </a>
-                            {% endif %}
-                            
-                        </li>
-                    {% endfor %}
-                </ol>
-            </div>
-        </div>
-    </div>
+    {% include 'catalog/partials/chapter_detail/chapter-list-modal.html' %}
 
 {% endblock %}
 
 {% block script %}
      <script src="{% static 'catalog/js/chapter_detail/reader_settings.js' %}" defer></script>
-     <script src="{% static 'catalog/js/chapter_detail/chapter-list.js' %}" defer></script>
+     <script src="{% static 'catalog/js/chapter_detail/chapter-list-modal.js' %}" defer></script>
      <script src="{% static 'catalog/js/chapter_detail/page-ctl.js' %}" defer></script>
 {% endblock %}

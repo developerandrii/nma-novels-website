@@ -1,0 +1,29 @@
+<div class="modal" hidden data-chapter-list-modal>
+    <div class="modal-tile">
+        <header class="modal-header">
+            <div class="close-button" data-chapter-list-modal-close>
+                {% include 'catalog/partials/icons/close.html' %}
+            </div>
+            <h3>Chapter List</h3>
+        </header>
+        <ol class="modal-body chapter-list">
+            {% for chp in chapters %}
+                <li>
+                    {% if chp.public_id == chapter.public_id %}
+                        <a class="chapter--current chapter" 
+                            tabindex="-1"
+                            href="{% url 'catalog:chapter-detail' chp.public_id %}"
+                            data-current-chapter>
+                            Chapter {{ chp.number }} — {{ chp.title }}
+                        </a>
+                    {% else %}
+                        <a class="chapter" href="{% url 'catalog:chapter-detail' chp.public_id %}">
+                            Chapter {{ chp.number }} — {{ chp.title }}
+                        </a>
+                    {% endif %}
+                    
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>

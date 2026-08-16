@@ -1,0 +1,40 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(400px, 100%);
+}
+
+.modal-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    padding: 10px;
+    background-color: var(--bg-color);
+    border-left: 1px solid var(--border-color);
+}
+
+.modal-header .close-button svg{
+    height: var(--text-base);
+    justify-self: end;
+}
+
+.modal-tile .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.chapter-list .chapter {
+    display: block;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.chapter-list .chapter--current {
+    background-color: hsl(0deg 1.35% 25.36%);
+}
