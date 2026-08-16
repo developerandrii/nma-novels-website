@@ -1,0 +1,35 @@
+.search-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+
+.search-dropdown li {
+    display: flex;
+    gap: 10px;
+
+}
+
+.searched-novel .cover-link,
+.search-dropdown li img {
+    flex-shrink: 0;
+    width: 50px;
+    aspect-ratio: 2 / 3;
+}
+
+.searched-novel .meta-tags {
+    padding-block: 4px;
+}
+
+.searched-novel .meta-tags .meta-tag {
+    font-size: var(--text-md);
+} 
+
+.searched-novel .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+

@@ -5,8 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <!-- Hyperscript (Required for _="" attributes to work) -->
+    <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
     <link rel="stylesheet" href="{% static 'core/css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/novel-search.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/novel-search-form.css' %}">
+    <link rel="stylesheet" href="{% static 'catalog/css/novel-search/dropdown.css' %}">
     {% block stylesheet %}
     {% endblock %}
     {{ form.media.css }}
@@ -16,6 +23,11 @@
         <span>NMA</span>
 
         <nav class="site-nav">
+            {% include 'core/partials/novel-search.html' %}
+            <div data-novel-search-display>
+                {% include 'core/icons/search.html' %}
+            </div>
+
             <a href="{% url 'catalog:novel-list' %}">Catalog</a>
         </nav>
 
@@ -34,6 +46,8 @@
         {% block main %}
         {% endblock %}
     </main>
+    <script src="{% static 'core/js/novel-search/clear.js' %}" defer></script>
+    <script src="{% static 'core/js/novel-search/display.js' %}" defer></script>
     {% block script %}
     {% endblock %}
     {{ form.media.js }}

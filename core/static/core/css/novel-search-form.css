@@ -1,0 +1,42 @@
+.novel-search-bar {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 0px 10px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: none;
+}
+
+.novel-search-bar input {
+    padding: 5px 7px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.novel-search-bar button {
+    border: none;
+}
+
+.novel-search-bar > .search-icon {
+    align-self: center;    
+    height: calc(var(--text-base));
+}
+.novel-search-bar > .clear-icon {
+    align-self: center;    
+    height: calc(var(--text-base) + 5px);
+}
+
+.novel-search-bar .close-button {
+    align-content: center;
+}
+
+.novel-search-bar .close-icon {
+    height: calc(var(--text-base) - 1px);
+    align-self: center;
+}
+
+
+

@@ -11,6 +11,7 @@ urlpatterns = [
     path('novel/<slug:public_id>', views.NovelDetailView.as_view(), name='novel-detail'),
     path('novel/<slug:public_id>/update/', views.NovelUpdateView.as_view(), name='novel-update'),
     path('novel/<slug:public_id>/delete/', views.NovelDeleteView.as_view(), name='novel-delete'),
+    path('search/', views.NovelSearchView.as_view(), name='novel-search'),
 
     path('novel/<slug:public_id>/add/', views.ChapterCreateView.as_view(), name='chapter-add'),
     path('chapter/<slug:public_id>', views.ChapterDetailView.as_view(), name='chapter-detail'),

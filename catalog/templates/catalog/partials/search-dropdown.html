@@ -1,0 +1,31 @@
+{% if searched_novels %}
+    <ul class="search-dropdown">
+        {% for novel in searched_novels %}
+            <li class="searched-novel">
+                <a href="{{ novel.get_absolute_url }}" class="cover-link">
+                    {% if novel.cover %}
+                    <img src="{{ novel.cover.url }}" alt="{{ novel.title }}" width="30">
+                    {% endif %}
+                </a>
+                <div>
+                    <h4>
+                        <a href="{{ novel.get_absolute_url }}">
+                            {{ novel.title }}
+                        </a>
+                    </h4>
+                    <div class="meta-tags">
+                        {% for author in novel.authors.all %}
+                            <span class="meta-tag"> {{ author }}</span>
+                        {% endfor %}
+                    </div>
+                    <p class="description">
+                        {{ novel.description }}
+                    </p>
+                </div>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <div class="search-dropdown">No novels found</div>
+{% endif %}

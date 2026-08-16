@@ -1,0 +1,16 @@
+.search-icon {
+    height: calc(var(--text-base) - 1px);
+}
+
+.novel-search {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: var(--bg-color);
+}
+
+.novel-search--hidden {
+    display: none;
+}

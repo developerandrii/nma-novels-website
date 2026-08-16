@@ -19,7 +19,7 @@ body {
 
     font-size: var(--text-base);
     background-color: var(--bg-color);
-    color: var(--color)
+    color: var(--color);
 }
 
 select {
@@ -32,7 +32,15 @@ select {
 }
 
 .site-header {
+    position: relative;
+
     padding: 10px;
     display: flex;
     justify-content: space-between;
 }
+
+.site-nav {
+    display: flex;
+    gap: 5px
+}
+

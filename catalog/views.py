@@ -59,6 +59,35 @@ class NovelDeleteView(DeleteView):
     slug_field = "public_id"
 
 
+class NovelSearchView(ListView):
+    model = Novel
+
+    def get_queryset(self):
+        query = self.request.GET.get('search-novel', '').strip()
+
+        if not query: return None
+
+        queryset = Novel.objects.filter(title__icontains=query)
+
+        if self.request.headers.get('HX-Request'):
+            return queryset[:5]
+        
+        return queryset
+
+    def get_template_names(self):
+        if self.request.headers.get('HX-Request'):
+            return ['catalog/partials/search-dropdown.html']
+        
+        return ['catalog/novel_list.html']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Pass the original query string back to populate the search input value
+        context['query'] = self.request.GET.get('search', '').strip()
+        context['searched_novels'] = self.get_queryset()
+        return context
+
+
 
 class ChapterDetailView(DetailView):
     model = Chapter

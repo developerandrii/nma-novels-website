@@ -1,0 +1,25 @@
+<div class="novel-search novel-search--hidden" data-novel-search>
+    <form class="novel-search-form" action="{% url 'catalog:novel-search' %}">  
+        <div class="novel-search-bar">
+            <input type="text" placeholder="Search novels" 
+            name="search-novel" 
+            id="novel-search-input"
+            type="search" 
+            placeholder="Search novels..."
+            hx-get="{% url 'catalog:novel-search' %}" 
+            hx-target=".search-dropdown" 
+            hx-trigger="input changed delay:300ms, search"
+            >
+
+            {% include 'core/icons/clear.html' %}
+            <button type="submit">
+                {% include 'core/icons/search.html' %}
+            </button>
+            <div class="close-button" data-novel-search-close>
+                {% include 'core/icons/close.html' %}
+            </div>
+        </div>
+    </form>
+
+    {% include 'catalog/partials/search-dropdown.html' %}
+</div>
