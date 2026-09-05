@@ -1,0 +1,28 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 10px;
+}
+
+.section-title {
+    font-size: var(--text-xl);
+}
+
+.member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.member {
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+
+.member .picture {
+    width: 30px;
+    aspect-ratio: 1 / 1;
+}

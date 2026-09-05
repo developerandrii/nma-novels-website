@@ -1,8 +1,11 @@
 .main-article {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    padding: 0 10px;
+    gap: 10px;
+}
+
+.section {
+    width: 100%;
 }
 
 .novel-header {
@@ -15,18 +18,6 @@
     flex-basis: 500px;
 }
 
-.novel-section {
-    margin: auto;
-    flex-basis: 500px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 4px -2px;
-    padding: 15px;
-}
 
 .novel-cover {
     width: 160px;

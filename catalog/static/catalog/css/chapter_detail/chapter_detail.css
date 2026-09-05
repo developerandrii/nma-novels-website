@@ -1,5 +1,5 @@
-main {
-    padding-inline: 5px;
+.main-article {
+    margin-top: 30px;
 }
 
 .chapter-header {
@@ -19,14 +19,13 @@ main {
     width: fit-content;
     justify-self: center;
     border-radius: 8px;
-    box-shadow: 0 0 2px 0;
+    box-shadow: 0 0 4px -1px black;
     padding: 5px;
     align-items: center;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color-2lv);
 }
 
 .page-ctl__button {
-    /* border: 1px solid black; */
     border: none;
     padding: 2px 4px;
     border-radius: 2px;

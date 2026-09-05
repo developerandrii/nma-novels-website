@@ -12,8 +12,9 @@
     gap: 10px;
     height: 100%;
     padding: 10px;
-    background-color: var(--bg-color);
-    border-left: 1px solid var(--border-color);
+    background-color: var(--bg-color-2lv);
+    /* border-left: 1px solid var(--border-color); */
+    box-shadow: 0 0 10px -3px black;
 }
 
 .modal-header .close-button svg{

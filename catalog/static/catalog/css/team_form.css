@@ -1,0 +1,21 @@
+.team-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-top: 30px;
+    margin-inline: 10px;
+}
+
+.team-form > p {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team-form > input[type="submit"] {
+    align-self: end;
+    width: fit-content;
+    padding: 4px 8px;
+
+}

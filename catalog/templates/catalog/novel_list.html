@@ -8,7 +8,7 @@
 
 
 {% block main %}
-    <section class="novel-list container">
+    <section class="novel-list container section">
         {% for novel in novel_list %}
             <article class="novel-tile">
                 <a href="{{ novel.get_absolute_url }}" class="novel-tile__cover-link">

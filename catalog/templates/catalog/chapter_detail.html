@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="{% static 'catalog/css/chapter_detail.css' %}">
+<link rel="stylesheet" href="{% static 'catalog/css/chapter_detail/chapter_detail.css' %}">
 <link rel="stylesheet" href="{% static 'catalog/css/chapter_detail/reader_settings.css' %}">
 <link rel="stylesheet" href="{% static 'catalog/css/chapter_detail/chapter-list-modal.css' %}">
 {% endblock %}
 
 {% block main %}
-    <article class="main-article">
+    <article class="main-article section">
         <header class="chapter-header container">
             <h1 class="chapter-title">
                 Chapter {{ chapter.number }}

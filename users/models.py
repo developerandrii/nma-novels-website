@@ -1,7 +1,7 @@
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
-from django.conf.urls.static import static
+
 
 import uuid
 
@@ -18,6 +18,7 @@ class User(AbstractUser):
         editable=False,
         unique=True,
     )
+    
     picture = models.ImageField(
         upload_to=create_user_picture_path,
         blank=True,
@@ -34,55 +35,5 @@ class User(AbstractUser):
         
         return f"{settings.STATIC_URL}users/default/picture.jpg"
 
-
-class CreatorGroup(models.Model):
-    class Status(models.TextChoices):
-        PENDING = 'pending', 'Pending'
-        VERIFIED = 'verified', 'Verified'
-        SUSPENDED = 'suspended','Suspended'
-
-    public_id = models.UUIDField(
-        default=uuid.uuid4,
-        editable=False,
-        unique=True,
-    )
-
-    name = models.CharField(max_length=250)
-    description = models.TextField(blank=True)
-
-    status = models.CharField(
-        max_length=10,
-        choices=Status.choices,
-        default=Status.PENDING,
-    )
-
-    created_at = models.DateTimeField(auto_now_add=True)
-
-
-class CreatorGroupMember(models.Model):
-    class Role(models.TextChoices):
-        OWNER = 'owner','Owner'
-        ADMIN = 'admin', 'Admin'
-        EDITOR = 'editor', 'Editor'
-        MEMBER = 'member', 'Member'
-
-    group = models.ForeignKey(
-        CreatorGroup,
-        on_delete=models.CASCADE,
-        related_name='members',
-    )
-
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='memberships',
-    )
-
-    role = models.CharField(
-        max_length=10,
-        choices=Role.choices,
-        default=Role.MEMBER,
-    )
-
-    joined_at = models.DateTimeField(auto_now_add=True)
-
+    def __str__(self):
+        return self.username

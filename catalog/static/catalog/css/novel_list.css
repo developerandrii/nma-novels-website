@@ -11,6 +11,9 @@
     flex: 1 1 450px; 
     display: flex;
     gap: 20px;
+    padding: 5px;
+    box-shadow: 1px 1px 4px 0px black;
+    border-radius: 2px;
 }
 
 .novel-tile__cover-link,
@@ -19,6 +22,7 @@
     width: 80px;
     aspect-ratio: 2 / 3;
     object-fit: cover;
+    border-radius: 2px;
 }
 
 .novel-tile__title {

@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/team_detail.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <section class="section team-detail">
+        <h1 class="section-title">{{ team.name }}</h1>
+        <p class="description">{{ team.description }}</p>
+    </section>
+    <section class="section member-section">
+        <h3 class="section-title">Members</h3>
+        <ol class="member-list">
+            {% for membership in team.memberships.all %}
+                <li class="member">
+                    
+                    <img class="picture" src="{{ user.picture_url }}" alt="">
+                    <h4>
+                        <a href="{{ membership.user.get_absolute_url }}">        
+                            {{ membership.user }}
+                        </a>
+                    </h4>
+                        
+                </li> 
+            {% endfor %}
+        </ol>
+    </section>
+    <section class="section novel-section">
+        <h3 class="section-title">Members</h3>
+        <ol class="novel-list">
+            {% for membership in team.memberships.all %}
+                <li class="member">
+                    
+                    <img class="picture" src="{{ user.picture_url }}" alt="">
+                    <h4>
+                        <a href="{{ membership.user.get_absolute_url }}">        
+                            {{ membership.user }}
+                        </a>
+                    </h4>
+                        
+                </li> 
+            {% endfor %}
+        </ol>
+    </section>
+
+
+{% endblock %}

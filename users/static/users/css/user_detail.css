@@ -1,9 +1,13 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .user-profile {
     display: flex;
     gap: 20px;
-    width: 95%;
-    margin: auto;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .user-profile img {
@@ -18,10 +22,45 @@
 .user-ctl {
     width: 95%;
     margin: auto;
+    margin-block: 10px;
+    border-radius: 5px;
 }
 
 #logout-form > button {
     padding: 5px 10px;
     border-radius: 2px;
     border: 1px solid gray;
+}
+
+.membership, .submission {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+
+.submission p,
+.membership p {
+    font-size: var(--text-md);
+}
+
+.submission-list {
+    gap: 5px;
+}
+
+
+.section .ctl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section .ctl * {
+    padding: 5px 10px;
+    border: var(--bd);
+    border-radius: 3px;
+    font-size: var(--text-md);
 }

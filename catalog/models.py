@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
+
+from .managers import ApprovadNovelManager
 
 import uuid
 
@@ -22,6 +25,11 @@ class Novel(models.Model):
         CANCELLED = "cancelled", "Cancelled"
         UPCOMING = "upcoming", "Upcoming"
 
+    class ApprovalStatus(models.TextChoices):
+        PENDING = 'pending', 'Pending'
+        APPROVED = 'approved', 'Approved'
+        SUSPENDED = 'suspended','Suspended'  
+
     public_id = models.UUIDField(
         default=uuid.uuid4,
         editable=False,
@@ -37,6 +45,14 @@ class Novel(models.Model):
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
+    )
+
+    approval_status = models.CharField(
+        max_length=10,
+        choices=ApprovalStatus.choices,
+        default=ApprovalStatus.PENDING,
+        blank=True,
+        null=True,
     )
     description = models.TextField(
         blank=True,    
@@ -79,6 +95,74 @@ class Novel(models.Model):
     def get_absolute_url(self):
         return reverse('catalog:novel-detail', kwargs={'public_id': self.public_id})
 
+    objects = models.Manager()
+    approved = ApprovadNovelManager()
+
+
+class NovelSubmission(models.Model):
+    class Status(models.TextChoices):
+        PENDING = 'pending', 'Pending Review'
+        APPROVED = 'approved', 'Approved'
+        REJECTED = 'rejected', 'Rejected'
+        CHANGES_REQUESTED = 'changes_requested', 'Changes Requested'
+
+    public_id = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+    )
+
+    submitted_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='submitted_novels',
+    )
+    
+    # Which team submitted it? (Optional if individual users can also submit)
+    team = models.ForeignKey(
+        'Team',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='novel_submissions',
+    )
+
+    novel = models.OneToOneField(
+        'Novel',
+        on_delete=models.CASCADE,
+        related_name='submission_request',
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.PENDING,
+    )
+
+    moderator_notes = models.TextField(
+        blank=True,
+        help_text="Provide feedback to the submitter (e.g., reason for rejection or needed edits)."
+    )
+
+    reviewed_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='reviewed_submissions',
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        team_str = f" [{self.team.name}]" if self.team else ""
+        return f"Submission: {self.novel.title}{team_str} - ({self.get_status_display()})"
+
 
 class Genre(models.Model):
     name = models.CharField(
@@ -118,8 +202,10 @@ class Creator(models.Model):
         editable=False,
         unique=True,
     )
+
     name = models.CharField(
-        unique=True
+        max_length=250,
+        unique=True,
     )
 
     class Meta:
@@ -155,4 +241,77 @@ class Chapter(models.Model):
     
     def get_absolute_url(self):
         return reverse('catalog:chapter-detail', kwargs={'public_id': self.public_id})
-    
+
+
+class Team(models.Model):
+    class Status(models.TextChoices):
+        PENDING = 'pending', 'Pending'
+        VERIFIED = 'verified', 'Verified'
+        SUSPENDED = 'suspended','Suspended'
+
+    public_id = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+    )
+
+    name = models.CharField(max_length=250)
+    description = models.TextField(blank=True)
+
+    status = models.CharField(
+        max_length=10,
+        choices=Status.choices,
+        default=Status.PENDING,
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('catalog:team-detail', kwargs={'public_id': self.public_id})
+
+
+class TeamMembership(models.Model):
+    class Role(models.TextChoices):
+        OWNER = 'owner','Owner'
+        ADMIN = 'admin', 'Admin'
+        EDITOR = 'editor', 'Editor'
+        MEMBER = 'member', 'Member'
+
+    team = models.ForeignKey(
+        Team,
+        on_delete=models.CASCADE,
+        related_name='memberships',
+    )
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='memberships',
+    )
+
+    role = models.CharField(
+        max_length=10,
+        choices=Role.choices,
+        default=Role.MEMBER,
+    )
+
+    joined_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['team', 'user'],
+                name='unique_team_member',
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.team}: {self.role} {self.user}"
+

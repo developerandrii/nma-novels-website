@@ -1,11 +1,11 @@
 from django.contrib import admin
-from catalog.models import Novel, Genre, Tag, Creator, Chapter
+from catalog.models import Novel, Genre, Tag, Creator, Chapter, Team, TeamMembership, NovelSubmission
 
 class NovleAdmin(admin.ModelAdmin):
-    list_display = ["title", "format", "status"]
-    list_filter = ["status", "format"]
+    list_display = ["title", "format", "status", 'approval_status']
+    list_filter = ["status", "format", 'approval_status']
     search_fields = ["title",]
-    
+
 
 class GenreAdmin(admin.ModelAdmin):
     search_fields = ['name']
@@ -18,13 +18,27 @@ class TagAdmin(admin.ModelAdmin):
 class CreatorAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
+
 class ChapterAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'title']
     search_fields = ['novel__title']
 
 
+class CreatorGroupAdmin(admin.ModelAdmin):
+    pass
+
+
+class CreatorGroupMemberAdmin(admin.ModelAdmin):
+    pass
+
+
+
+
 admin.site.register(Novel, NovleAdmin)
+admin.site.register(NovelSubmission)
 admin.site.register(Genre, GenreAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Creator, CreatorAdmin)
 admin.site.register(Chapter, ChapterAdmin)
+admin.site.register(Team, CreatorGroupAdmin)
+admin.site.register(TeamMembership, CreatorGroupMemberAdmin)

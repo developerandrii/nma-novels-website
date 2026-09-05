@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/team_list.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <div class="team-section section">
+        <div class="ctl">
+            <a class="add-team-link" href="{% url 'catalog:team-create' %}">+</a>
+        </div>
+        <ol class="team-list flex-row">
+            {% for team in team_list %}
+                <li class="team">
+                    <a href="{{ team.get_absolute_url }}">
+                        <h3>{{ team.name }}</h3>
+                        <p class="description">{{ team.description }}</p>
+                    </a>
+                </li> 
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}

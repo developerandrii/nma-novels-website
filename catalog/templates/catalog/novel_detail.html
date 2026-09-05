@@ -18,7 +18,7 @@
             </div>
         </header>
         
-        <section class="novel-info novel-section">
+        <section class="novel-info section">
             <div>
                 <h3>Description</h3>
                 <p>
@@ -29,12 +29,14 @@
             </div>
         </section>
 
-        <section class="novel-section">
-            <ol class="novel-chapters">
+        <section class="section">
+            <ol class="novel-chapters flex">
                 {% for chapter in novel.chapters.all %}
+                <li class="chapter">
                     <a href="{{chapter.get_absolute_url}}">
                         {{ chapter.number }}
                     </a>
+                </li>
                 {% endfor %}
             </ol>
 

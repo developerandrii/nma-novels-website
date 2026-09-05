@@ -8,16 +8,62 @@
 
 
 {% block main %}
-    <section class="user-profile">
+    <section class="user-profile section">
         <img src="{{ user.picture_url }}" alt="{{ user.username }} picture">
         <h1>
             {{ user.username }}
         </h1>
     </section>
-    <section class="user-ctl">
+    <section class="user-ctl section">
         <form id="logout-form" action="{% url 'users:logout' %}" method="post">
             {% csrf_token %}
             <button>Logout</button>
         </form>
+    </section>
+    <section class="section flex">
+        <h3>Memberships</h3>
+        <ol class="flex">
+            {% for membership in user.memberships.all %}
+                <li class="membership">
+                    <h4 class="team-name">
+                        <a href="{{ membership.team.get_absolute_url }}">
+                            {{ membership.team }}
+                        </a>
+                    </h4>
+                    <div>
+                        <p>
+                            Role:
+                            {{ membership.role }}
+                        </p>
+                        <p>
+                            Joined: 
+                            {{ membership.joined_at|date:"d-m-Y" }}
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section class="section flex submission-section">
+        <h3 class="section-tiitle">Submission</h3>
+        <div class="ctl">
+            <a href="{% url 'catalog:team-create' %}">Create Team</a>
+            <a href="{% url 'catalog:novel-create' %}">Add Novel</a>
+        </div>
+        <ol class="flex submission-list">
+            
+            {% for submission in user.submitted_novels.all %}
+                <li class="submission">
+                    <h4> Add novel: {{ submission.novel.title }}</h4>
+                    <div>
+                        <p>Status: {{ submission.status }}</p>
+                        <p>Submited on: {{ submission.created_at|date:"d-m-Y" }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+            <li>
+            </li>
+        </ol>
     </section>
 {% endblock %}

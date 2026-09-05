@@ -1,0 +1,22 @@
+.catalog {
+    position: relative;
+}
+
+
+.catalog-modal {
+    position: absolute;
+    top: 20px;
+}
+
+.catalog-modal .tile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: var(--modal-shadow);
+    background-color: var(--bg-color-2lv);
+
+}

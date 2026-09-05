@@ -1,0 +1,33 @@
+.team-section {
+    margin-top: 30px;
+}
+
+.team-section .ctl {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+
+.team-section .ctl .add-team-link {
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+.team-list {
+    gap: 20px;
+}
+
+.team {
+    flex: 1 1 400px;
+    padding: 10px;
+    height: 80px;
+    border: 1px solid hsl(0, 0%, 50%);
+    border-radius: 2px;
+}
+
+.team .description {
+    margin-top: 5px;
+    font-size: var(--text-md);
+}

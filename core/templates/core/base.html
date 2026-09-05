@@ -14,32 +14,39 @@
     <link rel="stylesheet" href="{% static 'core/css/novel-search.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/novel-search-form.css' %}">
     <link rel="stylesheet" href="{% static 'catalog/css/novel-search/dropdown.css' %}">
+    <link rel="stylesheet" href="{% static 'catalog/css/catalog-modal.css' %}">
     {% block stylesheet %}
     {% endblock %}
     {{ form.media.css }}
 </head>
 <body>
-    <header class="container site-header">
-        <span>NMA</span>
-
-        <nav class="site-nav">
-            {% include 'core/partials/novel-search.html' %}
-            <div data-novel-search-display>
-                {% include 'core/icons/search.html' %}
+    <header class="site-header">
+        <div class="container">
+            <span>NMA</span>
+    
+            <nav class="site-nav">
+                {% include 'core/partials/novel-search.html' %}
+                <div data-novel-search-display>
+                    {% include 'core/icons/search.html' %}
+                </div>
+    
+                <div class="catalog">
+                    <div data-catalog-button>Catalog</div>
+                    {% include 'catalog/partials/catalog-modal.html' %}
+    
+                </div>
+            </nav>
+    
+            <div>
+                {% if user.username %}
+                    <a href="{% url 'users:user-detail' user.pk %}">
+                        {{ user.username }}
+                    </a>
+                {% else %}
+                    <a href="{% url 'users:login' %}">Log in</a>
+                    <a href="{% url 'users:register' %}">Register</a>
+                {% endif %}
             </div>
-
-            <a href="{% url 'catalog:novel-list' %}">Catalog</a>
-        </nav>
-
-        <div>
-            {% if user.username %}
-                <a href="{% url 'users:user-detail' user.pk %}">
-                    {{ user.username }}
-                </a>
-            {% else %}
-                <a href="{% url 'users:login' %}">Log in</a>
-                <a href="{% url 'users:register' %}">Register</a>
-            {% endif %}
         </div>
     </header>
     <main class="container">
@@ -48,6 +55,7 @@
     </main>
     <script src="{% static 'core/js/novel-search/clear.js' %}" defer></script>
     <script src="{% static 'core/js/novel-search/display.js' %}" defer></script>
+    <script src="{% static 'catalog/js/catalog-modal.js' %}" defer></script>
     {% block script %}
     {% endblock %}
     {{ form.media.js }}

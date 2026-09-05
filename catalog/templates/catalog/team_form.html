@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'catalog/css/team_form.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <form class="team-form section" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

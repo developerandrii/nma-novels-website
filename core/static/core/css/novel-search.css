@@ -6,9 +6,10 @@
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 100;
     width: 100%;
     padding: 5px 10px;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color-2lv);
 }
 
 .novel-search--hidden {
