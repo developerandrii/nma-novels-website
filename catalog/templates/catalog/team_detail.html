@@ -29,23 +29,6 @@
             {% endfor %}
         </ol>
     </section>
-    <section class="section novel-section">
-        <h3 class="section-title">Members</h3>
-        <ol class="novel-list">
-            {% for membership in team.memberships.all %}
-                <li class="member">
-                    
-                    <img class="picture" src="{{ user.picture_url }}" alt="">
-                    <h4>
-                        <a href="{{ membership.user.get_absolute_url }}">        
-                            {{ membership.user }}
-                        </a>
-                    </h4>
-                        
-                </li> 
-            {% endfor %}
-        </ol>
-    </section>
 
 
 {% endblock %}
