@@ -18,8 +18,8 @@ urlpatterns = [
     path('chapter/<slug:public_id>/update/', views.ChapterUpdateView.as_view(), name='chapter-update'),
     path('chapter/<slug:public_id>/delete/', views.ChapterDeleteView.as_view(), name='chapter-delete'),
 
-    path('tems/', views.TeamListView.as_view(), name='team-list'),
-    path('tems/add/', views.TeamCreateView.as_view(), name='team-create'),
-    path('tems/<slug:public_id>/', views.TeamDetailView.as_view(), name='team-detail'),
+    path('teams/', views.TeamListView.as_view(), name='team-list'),
+    path('teams/add/', views.TeamCreateView.as_view(), name='team-create'),
+    path('teams/<slug:public_id>/', views.TeamDetailView.as_view(), name='team-detail'),
 
 ]
