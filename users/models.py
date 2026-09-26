@@ -31,7 +31,7 @@ class User(AbstractUser):
     @property
     def picture_url(self):
         if self.picture:
-            return self.picture
+            return self.picture.url
         
         return f"{settings.STATIC_URL}users/default/picture.jpg"
 
