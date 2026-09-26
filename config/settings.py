@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'storages',
 
     'core.apps.CoreConfig',
     'users.apps.UsersConfig',
@@ -134,10 +135,37 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
+# Absolute filesystem path where collectstatic places all assets
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Media files
-MEDIA_ROOT = 'media'
-MEDIA_URL = 'media/'
+
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default=None)
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default=None)
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', default=None)
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', default='us-east-1')
+
+if AWS_STORAGE_BUCKET_NAME:
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    
+    # Disable query parameters in image URLs for clean, cacheable image links
+    AWS_QUERYSTRING_AUTH = False 
+    
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+    
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+
+else:
+    MEDIA_ROOT = 'media'
+    MEDIA_URL = 'media/'
 
 
 # Custom user model
