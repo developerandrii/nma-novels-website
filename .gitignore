@@ -10,9 +10,6 @@ __pycache__/
 # User uploads
 media/
 
-# Collected static files (production)
-staticfiles/
-/static/
 
 # IDE files
 .vscode/
